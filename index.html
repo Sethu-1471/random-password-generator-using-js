@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random password generator js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <label>
+        <input type="text" placeholder="" disabled>
+    <p>password</p>
+    </label>
+    <button>Generate password</button>
+
+    <script>
+        const input = document.querySelector('input')
+        const button = document.querySelector('button')
+
+        function getPassword(length=16) {
+            const charset="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+            let password = ""
+
+            for( let i = 0; i < length; ++i){
+                let at = Math.floor(Math.random() * (charset.length + 1) )
+                password += charset.charAt(at)
+            }
+            
+            return password;
+        }
+
+        button.addEventListener('click', () => {
+            input.value = getPassword(16)
+        })
+    </script>
+</body>
+</html>
